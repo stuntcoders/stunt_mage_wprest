@@ -4,3 +4,4 @@ All notable changes to this project will be documented in this file. This projec
 ## Unreleased:
 ### ADDED:
 - Change log file
+- Git ignore file
