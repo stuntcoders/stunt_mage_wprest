@@ -1,0 +1,20 @@
+# Various IDE &#038; OS files that should never be committed
+.DS_Store
+.sass-cache/
+*.swp
+*.lock
+__MACOSX
+.idea
+/nbproject/*
+.project
+.buildpath
+.thumbs
+Thumbs.db
+build.properties
+.project
+.settings
+.buildpath
+/_notes/*
+config.codekit
+*.sublime-project
+*.sublime-workspace

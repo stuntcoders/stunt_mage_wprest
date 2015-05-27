@@ -1,0 +1,63 @@
+<?php
+    $prev = $this->getPrevPageUrl();
+    $next = $this->getNextPageUrl();
+?>
+
+<div class="archive">
+    <main class="site-main">
+        <?php foreach ($this->getPosts() as $post): ?>
+            <article class="row post">
+                <div class="medium-4 medium-push-8 columns">
+                    <div class='hex-wrapper'>
+                        <?php if (!empty($post['featured_image'])): ?>
+                            <div class="feature-img" style="background-image:url('<?php echo $post['featured_image']['guid']; ?>');"></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="medium-8 medium-pull-4 columns">
+                    <div class="entry-header">
+                        <h1 class="entry-title">
+                            <a href="<?php echo Mage::helper('stuntcoders_wprest/api')->getUrl($post['slug']); ?>">
+                                <?php echo $post['title']; ?>
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="entry-summary">
+                        <p>
+                            <?php echo isset($post['excerpt']) ? $post['excerpt'] : ''; ?>
+                        </p>
+                        <p>
+                            <a href="<?php echo Mage::helper('stuntcoders_wprest/api')->getUrl($post['slug']); ?>" class="more-link">
+                                <?php echo $this->__('Read more'); ?>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        <?php endforeach; ?>
+
+        <?php if (!empty($prev) || !empty($next)): ?>
+            <nav class="navigation paging-navigation medium-8 columns" role="navigation">
+                <div class="nav-links">
+                    <?php if (!empty($prev)): ?>
+                        <div class="nav-previous button">
+                            <a href="<?php echo $prev; ?>">
+                                <span class="meta-nav">&larr;</span>
+                                <?php echo $this->__('Newer posts'); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($next)): ?>
+                        <div class="nav-next button">
+                            <a href="<?php echo $next; ?>">
+                                <?php echo $this->__('Older posts'); ?>
+                                <span class="meta-nav">&rarr;</span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </nav>
+        <?php endif; ?>
+    </main>
+</div>
