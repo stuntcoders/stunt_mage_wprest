@@ -1,0 +1,5 @@
+app/code/local/Stuntcoders/Wprest                                            app/code/local/Stuntcoders/Wprest
+
+app/design/frontend/base/default/temlpate/stuntcoders/wprest                 app/design/frontend/base/default/temlpate/stuntcoders/wprest
+
+app/etc/modules/*                                                            app/etc/modules/
