@@ -25,7 +25,7 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
         return $this;
     }
 
-    public function getPosts(array $filter)
+    public function getPosts(array $filter = array())
     {
         $posts = array();
         $this->setCurrentPage(isset($filter['page']) ? (int) $filter['page'] : 1);

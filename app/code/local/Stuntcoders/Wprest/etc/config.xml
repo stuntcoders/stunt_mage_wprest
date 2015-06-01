@@ -14,6 +14,11 @@
             <stuntcoders_wprest_resource>
                 <class>Stuntcoders_Wprest_Model_Resource</class>
             </stuntcoders_wprest_resource>
+            <sitemap>
+                <rewrite>
+                    <sitemap>Stuntcoders_Wprest_Model_Sitemap</sitemap>
+                </rewrite>
+            </sitemap>
         </models>
         <blocks>
             <stuntcoders_wprest>
