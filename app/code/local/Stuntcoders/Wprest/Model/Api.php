@@ -6,30 +6,6 @@
  */
 class Stuntcoders_Wprest_Model_Api extends Varien_Object
 {
-    public function getCategories()
-    {
-        $categories = array();
-        try {
-            $categories = $this->_request($this->getApiEndpoint("taxonomies/category/terms"));
-        } catch (Exception $e) {
-            Mage::logException($e);
-        }
-
-        return $categories;
-    }
-
-    public function getCategoryBySlug($slug)
-    {
-        $categories = $this->getCategories();
-        foreach ($categories as $category) {
-            if (isset($category['slug']) && $slug === $category['slug']) {
-                return $category;
-            }
-        }
-
-        return false;
-    }
-
     public function getNextPageIndex()
     {
         return (int) $this->getCurrentPage() + 1;

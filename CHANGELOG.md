@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Post API model
+- Category API model
+
 ### Changed
 - Fix modman file
 - Move ACL configuration to adminhtml.xml
