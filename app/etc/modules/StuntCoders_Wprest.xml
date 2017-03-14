@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Stuntcoders_Wprest>
+        <StuntCoders_Wprest>
             <active>true</active>
-            <codePool>local</codePool>
-        </Stuntcoders_Wprest>
+            <codePool>community</codePool>
+        </StuntCoders_Wprest>
     </modules>
 </config>

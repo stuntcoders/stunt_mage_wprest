@@ -1,0 +1,24 @@
+<?php /* @var Stuntcoders_Wprest_Block_Post $this */ ?>
+<article class="row post">
+    <div class="medium-4 medium-push-8 columns">
+        <div class='hex-wrapper'>
+            <?php if ($image = $this->getFeaturedImage()): ?>
+                <div class="feature-img" style="background-image:url('<?php echo $image; ?>');"></div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <div class="medium-8 medium-pull-4 columns">
+        <div class="entry-header">
+            <h2 class="entry-title">
+                <a href="<?php echo $this->getPostUrl(); ?>">
+                    <?php echo $this->getPostTitle(); ?>
+                </a>
+            </h2>
+        </div>
+        <div class="entry-summary">
+            <p><?php echo $this->getExcerpt(); ?></p>
+            <p><a href="<?php echo $this->getPostUrl(); ?>" class="more-link"><?php echo $this->__('Read more'); ?></a></p>
+        </div>
+    </div>
+</article>
