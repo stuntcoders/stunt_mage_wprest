@@ -10,11 +10,6 @@ class Stuntcoders_Wprest_Helper_Api extends Mage_Core_Helper_Abstract
         ));
     }
 
-    public function getApiEndpoint()
-    {
-        return Mage::getStoreConfig('stuntcoders_wprest/wordpress_options/api_endpoint');
-    }
-
     public function getUrl($slug, array $query = array())
     {
         return Mage::getUrl($slug, array('_query' => $query));
