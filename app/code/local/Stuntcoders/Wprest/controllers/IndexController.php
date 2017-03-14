@@ -21,7 +21,7 @@ class Stuntcoders_Wprest_IndexController extends Mage_Core_Controller_Front_Acti
         $category = $this->getRequest()->getParam('object', false);
 
         $this->loadLayout();
-        $this->getLayout()->getBlock('head')->setTitle($category['title']['rendered']);
+        $this->getLayout()->getBlock('head')->setTitle($category['name']);
 
         $block = $this->getLayout()->createBlock('stuntcoders_wprest/category', 'stuntcoders_wprest_category')
             ->setCategory($category);
