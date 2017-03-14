@@ -4,6 +4,7 @@ class Stuntcoders_Wprest_Controller_Router extends Mage_Core_Controller_Varien_R
 {
     protected $_matchers = array(
         'post' => '_matchPost',
+        'page' => '_matchPage',
         'category' => '_matchCategory',
     );
 
@@ -84,6 +85,23 @@ class Stuntcoders_Wprest_Controller_Router extends Mage_Core_Controller_Varien_R
         }
 
         return reset($posts);
+    }
+
+    /**
+     * @param string $identifier
+     * @return false|array
+     */
+    protected function _matchPage($identifier)
+    {
+        $pages = Mage::getSingleton('stuntcoders_wprest/api_page')->getCollection(array(
+            'slug' => $identifier
+        ));
+
+        if (empty($pages)) {
+            return false;
+        }
+
+        return reset($pages);
     }
 
     /**
