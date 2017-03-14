@@ -3,14 +3,26 @@
 /**
  * @method Stuntcoders_Wprest_Model_Api setBaseUri(string $uri)
  * @method string getBaseUri()
+ * @method Stuntcoders_Wprest_Model_Api setNextLink(string $link)
+ * @method string getNextLink()
+ * @method Stuntcoders_Wprest_Model_Api setPrevLink(string $link)
+ * @method string getPrevLink()
+ * @method Stuntcoders_Wprest_Model_Api setCurrentPage(int $page)
+ * @method int getCurrentPage()
  */
 class Stuntcoders_Wprest_Model_Api extends Varien_Object
 {
+    /**
+     * @return int
+     */
     public function getNextPageIndex()
     {
         return (int) $this->getCurrentPage() + 1;
     }
 
+    /**
+     * @return int
+     */
     public function getPrevPageIndex()
     {
         return (int) $this->getCurrentPage() - 1;
@@ -75,6 +87,10 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
         return "{$this->getBaseUri()}" . ltrim($route, '/');
     }
 
+    /**
+     * @param string $linkHeader
+     * @return bool
+     */
     protected function _parseLinkHeader($linkHeader)
     {
         if (empty($linkHeader)) {
