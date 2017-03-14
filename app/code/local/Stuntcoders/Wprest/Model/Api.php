@@ -6,37 +6,6 @@
  */
 class Stuntcoders_Wprest_Model_Api extends Varien_Object
 {
-    public function getPosts(array $filter = array())
-    {
-        $posts = array();
-        $this->setCurrentPage(isset($filter['page']) ? (int) $filter['page'] : 1);
-        $postTypeFilter = http_build_query(array_merge($filter, Mage::helper('stuntcoders_wprest/api')->getPostTypes()));
-        try {
-            $posts = $this->_request($this->getApiEndpoint("posts?{$postTypeFilter}"));
-        } catch (Exception $e) {
-            Mage::logException($e);
-        }
-
-        return $posts;
-    }
-
-    public function getPost($postId)
-    {
-        $posts = array();
-        try {
-            $posts = $this->_request($this->getApiEndpoint("posts/$postId"));
-        } catch (Exception $e) {
-            Mage::logException($e);
-        }
-
-        return $posts;
-    }
-
-    public function searchPosts($term)
-    {
-        return $this->getPosts(array('filter' => array('s' => $term)));
-    }
-
     public function getCategories()
     {
         $categories = array();
@@ -61,11 +30,6 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
         return false;
     }
 
-    public function getApiEndpoint($request)
-    {
-        return "{$this->getBaseUri()}" . ltrim($request, '/');
-    }
-
     public function getNextPageIndex()
     {
         return (int) $this->getCurrentPage() + 1;
@@ -77,15 +41,15 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
     }
 
     /**
-     * @param string $endpoint
+     * @param string $route
      * @param array $params
      * @return array
      * @throws Zend_Http_Client_Exception|Mage_Core_Exception
      */
-    protected function _request($endpoint, $params = array())
+    protected function _request($route, $params = array())
     {
         $this->_getHttpClient()->resetParameters();
-        $this->_getHttpClient()->setUri($endpoint);
+        $this->_getHttpClient()->setUri($this->_getEndpointUri($route));
         $this->_getHttpClient()->setParameterGet($params);
         $response = $this->_getHttpClient()->request(Zend_Http_Client::GET);
 
@@ -124,6 +88,15 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
         }
 
         return $this->getData('_http_client');
+    }
+
+    /**
+     * @param string $route
+     * @return string
+     */
+    protected function _getEndpointUri($route)
+    {
+        return "{$this->getBaseUri()}" . ltrim($route, '/');
     }
 
     protected function _parseLinkHeader($linkHeader)
