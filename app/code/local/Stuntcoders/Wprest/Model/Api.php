@@ -78,13 +78,15 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
 
     /**
      * @param string $endpoint
+     * @param array $params
      * @return array
      * @throws Zend_Http_Client_Exception|Mage_Core_Exception
      */
-    protected function _request($endpoint)
+    protected function _request($endpoint, $params = array())
     {
         $this->_getHttpClient()->resetParameters();
         $this->_getHttpClient()->setUri($endpoint);
+        $this->_getHttpClient()->setParameterGet($params);
         $response = $this->_getHttpClient()->request(Zend_Http_Client::GET);
 
         $headers = $response->getHeaders();
