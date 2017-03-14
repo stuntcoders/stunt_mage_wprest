@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Post API model
 - Category API model
+- Page API model
 
 ### Changed
 - Fix modman file
