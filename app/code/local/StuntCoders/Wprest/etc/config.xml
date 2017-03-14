@@ -1,40 +1,40 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Stuntcoders_Wprest>
+        <StuntCoders_Wprest>
             <version>0.1.3</version>
-        </Stuntcoders_Wprest>
+        </StuntCoders_Wprest>
     </modules>
     <global>
         <models>
             <stuntcoders_wprest>
-                <class>Stuntcoders_Wprest_Model</class>
+                <class>StuntCoders_Wprest_Model</class>
                 <resourceModel>stuntcoders_wprest_resource</resourceModel>
             </stuntcoders_wprest>
             <stuntcoders_wprest_resource>
-                <class>Stuntcoders_Wprest_Model_Resource</class>
+                <class>StuntCoders_Wprest_Model_Resource</class>
             </stuntcoders_wprest_resource>
             <sitemap>
                 <rewrite>
-                    <sitemap>Stuntcoders_Wprest_Model_Sitemap</sitemap>
+                    <sitemap>StuntCoders_Wprest_Model_Sitemap</sitemap>
                 </rewrite>
             </sitemap>
         </models>
         <blocks>
             <stuntcoders_wprest>
-                <class>Stuntcoders_Wprest_Block</class>
+                <class>StuntCoders_Wprest_Block</class>
             </stuntcoders_wprest>
         </blocks>
         <helpers>
             <stuntcoders_wprest>
-                <class>Stuntcoders_Wprest_Helper</class>
+                <class>StuntCoders_Wprest_Helper</class>
             </stuntcoders_wprest>
         </helpers>
         <events>
             <controller_front_init_routers>
                 <observers>
                     <stuntcoders_wprest_category>
-                        <class>Stuntcoders_Wprest_Controller_Router</class>
+                        <class>StuntCoders_Wprest_Controller_Router</class>
                         <method>initControllerRouters</method>
                     </stuntcoders_wprest_category>
                 </observers>
@@ -46,7 +46,7 @@
             <stuntcoders_wprest>
                 <use>standard</use>
                 <args>
-                    <module>Stuntcoders_Wprest</module>
+                    <module>StuntCoders_Wprest</module>
                     <frontName>stuntcoders_wprest</frontName>
                 </args>
             </stuntcoders_wprest>

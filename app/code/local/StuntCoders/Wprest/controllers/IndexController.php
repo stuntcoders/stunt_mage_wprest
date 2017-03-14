@@ -1,6 +1,6 @@
 <?php
 
-class Stuntcoders_Wprest_IndexController extends Mage_Core_Controller_Front_Action
+class StuntCoders_Wprest_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function postAction()
     {

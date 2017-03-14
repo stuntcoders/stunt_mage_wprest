@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @method Stuntcoders_Wprest_Block_Post setPage(array $page)
+ * @method StuntCoders_Wprest_Block_Post setPage(array $page)
  * @method array getPage()
  */
-class Stuntcoders_Wprest_Block_Page extends Mage_Core_Block_Template
+class StuntCoders_Wprest_Block_Page extends Mage_Core_Block_Template
 {
     public function getTitle()
     {

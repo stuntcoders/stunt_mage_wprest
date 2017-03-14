@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @method Stuntcoders_Wprest_Model_Api_Abstract setBaseUri(string $uri)
+ * @method StuntCoders_Wprest_Model_Api_Abstract setBaseUri(string $uri)
  * @method string getBaseUri()
- * @method Stuntcoders_Wprest_Model_Api_Abstract setNextLink(string $link)
+ * @method StuntCoders_Wprest_Model_Api_Abstract setNextLink(string $link)
  * @method string getNextLink()
- * @method Stuntcoders_Wprest_Model_Api_Abstract setPrevLink(string $link)
+ * @method StuntCoders_Wprest_Model_Api_Abstract setPrevLink(string $link)
  * @method string getPrevLink()
- * @method Stuntcoders_Wprest_Model_Api_Abstract setCurrentPage(int $page)
+ * @method StuntCoders_Wprest_Model_Api_Abstract setCurrentPage(int $page)
  * @method int getCurrentPage()
  */
-abstract class Stuntcoders_Wprest_Model_Api_Abstract extends Varien_Object
+abstract class StuntCoders_Wprest_Model_Api_Abstract extends Varien_Object
 {
     /**
      * @param string $id

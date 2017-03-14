@@ -1,6 +1,6 @@
 <?php
 
-class Stuntcoders_Wprest_Helper_Data extends Mage_Core_Helper_Abstract
+class StuntCoders_Wprest_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const BASE_URI_CONFIG_PATH = 'stuntcoders_wprest/general/base_uri';
 

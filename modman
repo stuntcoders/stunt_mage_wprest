@@ -1,3 +1,3 @@
-app/code/local/Stuntcoders/Wprest                                            app/code/local/Stuntcoders/Wprest
+app/code/local/StuntCoders/Wprest                                            app/code/local/StuntCoders/Wprest
 app/design/frontend/base/default/template/stuntcoders/*                      app/design/frontend/base/default/template/stuntcoders/
 app/etc/modules/*                                                            app/etc/modules/

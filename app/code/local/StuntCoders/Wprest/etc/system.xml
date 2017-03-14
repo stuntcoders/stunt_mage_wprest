@@ -1,7 +1,7 @@
 <config>
     <tabs>
         <stuntcoders translate="label" module="stuntcoders_wprest">
-            <label>Stuntcoders</label>
+            <label>StuntCoders</label>
             <sort_order>99999</sort_order>
         </stuntcoders>
     </tabs>
