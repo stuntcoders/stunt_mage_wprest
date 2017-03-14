@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Changed
 - Fix modman file
+- Move ACL configuration to adminhtml.xml
 
 ## [0.1.3] — 2015-06-03
 ### Added

@@ -49,27 +49,6 @@
             </controller_front_init_routers>
         </events>
     </global>
-    <adminhtml>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <stuntcoders_wprest>
-                                            <title>WordPress Configuration</title>
-                                        </stuntcoders_wprest>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
-    </adminhtml>
     <frontend>
         <routers>
             <stuntcoders_wprest>
