@@ -7,7 +7,7 @@
     </tabs>
     <sections>
         <stuntcoders_wprest translate="label" module="stuntcoders_wprest">
-            <label>WordPress Configuration</label>
+            <label>WordPress REST API</label>
             <tab>stuntcoders</tab>
             <frontend_type>text</frontend_type>
             <sort_order>1000</sort_order>
@@ -15,23 +15,23 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <wordpress_options translate="label">
-                    <label>WordPress options</label>
+                <general translate="label">
+                    <label>General Options</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <api_endpoint translate="label comment">
-                            <label>Api endpoint:</label>
+                        <base_uri translate="label comment">
+                            <label>Base uri</label>
                             <comment>http://example.com/wp-json</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </api_endpoint>
+                        </base_uri>
                         <homepage translate="label">
                             <label>Homepage path:</label>
                             <frontend_type>text</frontend_type>
@@ -41,7 +41,7 @@
                             <show_in_store>1</show_in_store>
                         </homepage>
                     </fields>
-                </wordpress_options>
+                </general>
             </groups>
         </stuntcoders_wprest>
     </sections>
