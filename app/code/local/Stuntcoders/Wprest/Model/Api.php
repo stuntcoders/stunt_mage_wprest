@@ -1,16 +1,11 @@
 <?php
 
+/**
+ * @method Stuntcoders_Wprest_Model_Api setBaseUri(string $uri)
+ * @method string getBaseUri()
+ */
 class Stuntcoders_Wprest_Model_Api extends Varien_Object
 {
-    public function __construct($apiEndpoint = null)
-    {
-        if (empty($apiEndpoint)) {
-            $apiEndpoint = Mage::helper('stuntcoders_wprest/api')->getApiEndpoint();
-        }
-
-        $this->setUrl(rtrim($apiEndpoint, '/'));
-    }
-
     public function getPosts(array $filter = array())
     {
         $posts = array();
@@ -68,7 +63,7 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
 
     public function getApiEndpoint($request)
     {
-        return "{$this->getUrl()}/" . ltrim($request, '/');
+        return "{$this->getBaseUri()}" . ltrim($request, '/');
     }
 
     public function getNextPageIndex()
@@ -120,6 +115,8 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
                 'keepalive' => true,
                 'timeout' => 10,
             ));
+
+            $this->setBaseUri(Mage::helper('stuntcoders_wprest')->getBaseUri());
 
             $this->setData('_http_client', $client);
         }
