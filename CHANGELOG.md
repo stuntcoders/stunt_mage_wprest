@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 - Homepage support
+- Depricated post types support
 
 ## [0.1.3] — 2015-06-03
 ### Added
