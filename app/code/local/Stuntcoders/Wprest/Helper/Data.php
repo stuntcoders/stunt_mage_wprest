@@ -13,11 +13,6 @@ class Stuntcoders_Wprest_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig(self::BASE_URI_CONFIG_PATH, $store);
     }
 
-    public function renderPost($action, $post)
-    {
-
-    }
-
     public function renderCategory($action, $posts)
     {
         if (empty($posts)) {

@@ -1,50 +1,47 @@
 <?php
 
+/**
+ * @method Stuntcoders_Wprest_Block_Post setPost(array $post)
+ * @method array getPost()
+ */
 class Stuntcoders_Wprest_Block_Post extends Mage_Core_Block_Template
 {
-    public function _construct()
+    public function getTitle()
     {
-        $this->setTemplate('stuntcoders/wprest/post.phtml');
-        parent::_construct();
-    }
-
-    public function getPostTitle()
-    {
-        if (!$this->hasPost()) {
-            return '';
-        }
-
         $post = $this->getPost();
 
-        return isset($post['title']) ? $post['title'] : '';
+        return $post['title']['rendered'];
     }
 
-    public function getPostContent()
+    public function getExcerpt()
     {
-        if (!$this->hasPost()) {
-            return '';
-        }
-
         $post = $this->getPost();
 
-        return isset($post['content']) ? $post['content'] : '';
+        return $post['excerpt']['rendered'];
+    }
+
+    public function getContent()
+    {
+        $post = $this->getPost();
+
+        return $post['content']['rendered'];
     }
 
     public function getPostUrl()
     {
-        if (!$this->hasPost()) {
-            return Mage::getUrl();
-        }
-
         $post = $this->getPost();
 
-        return Mage::helper('stuntcoders_wprest/api')->getUrl(isset($post['slug']) ? $post['slug'] : '');
+        return $this->getUrl($post['slug']);
     }
 
     protected function _toHtml()
     {
-        if (!$this->hasPost()) {
+        if (!$this->getPost()) {
             return '';
+        }
+
+        if (!$this->getTemplate()) {
+            $this->setTemplate('stuntcoders/wprest/post.phtml');
         }
 
         return parent::_toHtml();
