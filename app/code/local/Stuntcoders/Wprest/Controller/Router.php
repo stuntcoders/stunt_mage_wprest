@@ -60,13 +60,13 @@ class Stuntcoders_Wprest_Controller_Router extends Mage_Core_Controller_Varien_R
                     ->setActionName($action)
                     ->setParam('object', $object);
 
-                break;
+                $request->setAlias(Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS, $identifier);
+
+                return true;
             }
         }
 
-        $request->setAlias(Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS, $identifier);
-
-        return true;
+        return false;
     }
 
     /**
