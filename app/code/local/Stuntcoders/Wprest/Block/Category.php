@@ -1,56 +1,48 @@
 <?php
 
+/**
+ * @method Stuntcoders_Wprest_Block_Category setCategory(array $category)
+ * @method array getCategory()
+ */
 class Stuntcoders_Wprest_Block_Category extends Mage_Core_Block_Template
 {
-    public function _construct()
+    protected function getSlug()
     {
-        $this->setTemplate('stuntcoders/wprest/category.phtml');
-        parent::_construct();
+        $category = $this->getCategory();
+
+        return $category['slug'];
     }
 
     public function getNextPageUrl()
     {
-        $api = $this->getApi();
-        if (!$api) {
-            return '';
+        $api = Mage::getSingleton('stuntcoders_wprest/api_category');
+        if (!$api->getNextLink()) {
+            return false;
         }
 
-        if (!$api->hasNextLink()) {
-            return '';
-        }
-
-        return Mage::helper('stuntcoders_wprest/api')
-            ->getUrl($this->_getCategorySlug(), array('page' => $api->getNextPageIndex()));
+        return $this->getUrl($this->getSlug(), array('_query' => array('page' => $api->getNextPageIndex())));
     }
 
     public function getPrevPageUrl()
     {
-        $api = $this->getApi();
-        if (!$api) {
-            return '';
+        $api = Mage::getSingleton('stuntcoders_wprest/api_category');
+        if (!$api->getPrevLink()) {
+            return false;
         }
 
-        if (!$api->hasPrevLink()) {
-            return '';
-        }
-
-        return Mage::helper('stuntcoders_wprest/api')
-            ->getUrl($this->_getCategorySlug(), array('page' => $api->getPrevPageIndex()));
+        return $this->getUrl($this->getSlug(), array('_query' => array('page' => $api->getPrevPageIndex())));
     }
 
     protected function _toHtml()
     {
-        if (!$this->hasPosts()) {
+        if (!$this->getCategory()) {
             return '';
         }
 
+        if (!$this->getTemplate()) {
+            $this->setTemplate('stuntcoders/wprest/category.phtml');
+        }
+
         return parent::_toHtml();
-    }
-
-    protected function _getCategorySlug()
-    {
-        $category = $this->getCategory();
-
-        return isset($category['slug']) ? $category['slug'] : '';
     }
 }

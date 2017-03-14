@@ -15,4 +15,18 @@ class Stuntcoders_Wprest_IndexController extends Mage_Core_Controller_Front_Acti
         $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
+
+    public function categoryAction()
+    {
+        $category = $this->getRequest()->getParam('object', false);
+
+        $this->loadLayout();
+        $this->getLayout()->getBlock('head')->setTitle($category['title']['rendered']);
+
+        $block = $this->getLayout()->createBlock('stuntcoders_wprest/category', 'stuntcoders_wprest_category')
+            ->setCategory($category);
+
+        $this->getLayout()->getBlock('content')->append($block);
+        $this->renderLayout();
+    }
 }
