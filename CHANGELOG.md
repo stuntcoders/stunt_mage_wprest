@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix modman file
 - Move ACL configuration to adminhtml.xml
 
+### Removed
+- Homepage support
+
 ## [0.1.3] — 2015-06-03
 ### Added
 - Missing sitemap model

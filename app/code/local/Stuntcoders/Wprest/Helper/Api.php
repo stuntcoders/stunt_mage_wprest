@@ -14,14 +14,4 @@ class Stuntcoders_Wprest_Helper_Api extends Mage_Core_Helper_Abstract
     {
         return Mage::getUrl($slug, array('_query' => $query));
     }
-
-    public function isHomepage($path)
-    {
-        return trim($path, '/') === $this->getHomepageSlug();
-    }
-
-    public function getHomepageSlug()
-    {
-        return trim(Mage::getStoreConfig('stuntcoders_wprest/wordpress_options/homepage'), '/');
-    }
 }

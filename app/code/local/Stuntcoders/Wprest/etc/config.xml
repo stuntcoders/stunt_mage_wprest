@@ -64,7 +64,6 @@
         <stuntcoders_wprest>
             <wordpress_options>
                 <post_types>post,page</post_types>
-                <homepage>site</homepage>
             </wordpress_options>
         </stuntcoders_wprest>
     </default>

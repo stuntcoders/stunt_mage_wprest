@@ -45,27 +45,13 @@ class Stuntcoders_Wprest_Controller_Wp_Category extends Mage_Core_Controller_Var
         }
 
         $api = Mage::getModel('stuntcoders_wprest/api');
-        if (Mage::helper('stuntcoders_wprest/api')->isHomepage($identifier)) {
-            $category = array(
-                'slug' => Mage::helper('stuntcoders_wprest/api')->getHomepageSlug()
-            );
-            $filter = array(
-                'filter' => array(
-                    'orderby' => 'post_date',
-                    'order' => 'DESC',
-                ),
-                'type' => array('post'),
-                'page' => $request->getParam('page', 1)
-            );
-        } else {
-            $category = $api->getCategoryBySlug($identifier);
-            $filter = array(
-                'filter' => array(
-                    'category_name' => $identifier
-                ),
-                'page' => $request->getParam('page', 1)
-            );
-        }
+        $category = $api->getCategoryBySlug($identifier);
+        $filter = array(
+            'filter' => array(
+                'category_name' => $identifier
+            ),
+            'page' => $request->getParam('page', 1)
+        );
 
         $posts = $api->getPosts($filter);
         if (empty($posts)) {
