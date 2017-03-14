@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix modman file
 - Move ACL configuration to adminhtml.xml
 - Refactor router
+- Move module to community code pool
 
 ### Removed
 - Homepage support
