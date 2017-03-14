@@ -13,9 +13,10 @@
 abstract class Stuntcoders_Wprest_Model_Api_Abstract extends Varien_Object
 {
     /**
+     * @param string $id
      * @return string
      */
-    protected abstract function _getRoute();
+    protected abstract function _getRoute($id = '');
 
     /**
      * @param array $params
