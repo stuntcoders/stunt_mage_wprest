@@ -2,8 +2,8 @@
 <article class="row post">
     <div class="medium-4 medium-push-8 columns">
         <div class='hex-wrapper'>
-            <?php if (!empty($post['featured_image'])): ?>
-                <div class="feature-img" style="background-image:url('<?php echo $post['featured_image']['guid']; ?>');"></div>
+            <?php if ($image = $this->getFeaturedImage()): ?>
+                <div class="feature-img" style="background-image:url('<?php echo $image; ?>');"></div>
             <?php endif; ?>
         </div>
     </div>

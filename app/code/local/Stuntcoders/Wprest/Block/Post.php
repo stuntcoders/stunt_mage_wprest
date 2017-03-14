@@ -34,6 +34,22 @@ class Stuntcoders_Wprest_Block_Post extends Mage_Core_Block_Template
         return $this->getUrl($post['slug']);
     }
 
+    public function getFeaturedImage()
+    {
+        if (!$this->hasData('_featured_image')) {
+            $post = $this->getPost();
+
+            if (empty($post['featured_media'])) {
+                $this->setData('_featured_image', '');
+            } else {
+                $media = Mage::getSingleton('stuntcoders_wprest/api_media')->getMember($post['featured_media']);
+                $this->setData('_featured_image', $media['source_url']);
+            }
+        }
+
+        return $this->getData('_featured_image');
+    }
+
     protected function _toHtml()
     {
         if (!$this->getPost()) {
