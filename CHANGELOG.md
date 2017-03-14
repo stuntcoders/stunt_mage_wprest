@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Post API model
 - Category API model
 - Page API model
+- Media API model
 
 ### Changed
 - Fix modman file
