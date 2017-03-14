@@ -11,20 +11,6 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
         $this->setUrl(rtrim($apiEndpoint, '/'));
     }
 
-    public function initHttpClient($endpoint)
-    {
-        $client = new Zend_Http_Client($endpoint);
-        $client->setHeaders(array('Content-Type: application/json'));
-        $client->setConfig(array(
-            'keepalive' => true,
-            'timeout'   => 60,
-        ));
-
-        $this->setHttpClient($client);
-
-        return $this;
-    }
-
     public function getPosts(array $filter = array())
     {
         $posts = array();
@@ -87,18 +73,24 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
 
     public function getNextPageIndex()
     {
-        return (int)$this->getCurrentPage() + 1;
+        return (int) $this->getCurrentPage() + 1;
     }
 
     public function getPrevPageIndex()
     {
-        return (int)$this->getCurrentPage() - 1;
+        return (int) $this->getCurrentPage() - 1;
     }
 
+    /**
+     * @param string $endpoint
+     * @return array
+     * @throws Zend_Http_Client_Exception|Mage_Core_Exception
+     */
     protected function _request($endpoint)
     {
-        $this->initHttpClient($endpoint);
-        $response = $this->getHttpClient()->request(Zend_Http_Client::GET);
+        $this->_getHttpClient()->resetParameters();
+        $this->_getHttpClient()->setUri($endpoint);
+        $response = $this->_getHttpClient()->request(Zend_Http_Client::GET);
 
         $headers = $response->getHeaders();
         if (isset($headers['Link'])) {
@@ -107,12 +99,31 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
 
         $responseBody = $response->getBody();
         if ($response->getStatus() !== 200) {
-            throw new Exception("WP Api error: {$responseBody}");
+            Mage::throwException($responseBody);
         }
 
-        $responseBody = json_decode($responseBody, true);
+        $responseBody = Mage::helper('core')->jsonDecode($responseBody);
 
-        return empty($responseBody)? array() : $responseBody;
+        return empty($responseBody) ? array() : $responseBody;
+    }
+
+    /**
+     * @return Zend_Http_Client
+     * @throws Zend_Http_Client_Exception
+     */
+    protected function _getHttpClient()
+    {
+        if (!$this->getData('_http_client')) {
+            $client = new Zend_Http_Client();
+            $client->setHeaders(array('Content-Type: application/json'));
+            $client->setConfig(array(
+                'keepalive' => true,
+                'timeout' => 10,
+            ));
+
+            $this->setData('_http_client', $client);
+        }
+        return $this->getData('http_client');
     }
 
     protected function _parseLinkHeader($linkHeader)
