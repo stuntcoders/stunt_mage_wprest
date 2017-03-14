@@ -34,17 +34,9 @@
             <controller_front_init_routers>
                 <observers>
                     <stuntcoders_wprest_category>
-                        <class>Stuntcoders_Wprest_Controller_Wp_Category</class>
+                        <class>Stuntcoders_Wprest_Controller_Router</class>
                         <method>initControllerRouters</method>
                     </stuntcoders_wprest_category>
-                </observers>
-            </controller_front_init_routers>
-            <controller_front_init_routers>
-                <observers>
-                    <stuntcoders_wprest_post>
-                        <class>Stuntcoders_Wprest_Controller_Wp_Post</class>
-                        <method>initControllerRouters</method>
-                    </stuntcoders_wprest_post>
                 </observers>
             </controller_front_init_routers>
         </events>
