@@ -1,17 +1,49 @@
 <?php
 
 /**
- * @method Stuntcoders_Wprest_Model_Api setBaseUri(string $uri)
+ * @method Stuntcoders_Wprest_Model_Api_Abstract setBaseUri(string $uri)
  * @method string getBaseUri()
- * @method Stuntcoders_Wprest_Model_Api setNextLink(string $link)
+ * @method Stuntcoders_Wprest_Model_Api_Abstract setNextLink(string $link)
  * @method string getNextLink()
- * @method Stuntcoders_Wprest_Model_Api setPrevLink(string $link)
+ * @method Stuntcoders_Wprest_Model_Api_Abstract setPrevLink(string $link)
  * @method string getPrevLink()
- * @method Stuntcoders_Wprest_Model_Api setCurrentPage(int $page)
+ * @method Stuntcoders_Wprest_Model_Api_Abstract setCurrentPage(int $page)
  * @method int getCurrentPage()
  */
-class Stuntcoders_Wprest_Model_Api extends Varien_Object
+abstract class Stuntcoders_Wprest_Model_Api_Abstract extends Varien_Object
 {
+    /**
+     * @return string
+     */
+    protected abstract function _getRoute();
+
+    /**
+     * @param array $params
+     * @return array
+     */
+    public function getCollection($params = array())
+    {
+        return $this->_request($this->_parseRoute(), $params);
+    }
+
+    /**
+     * @param string|int $id
+     * @return array
+     */
+    public function getMember($id)
+    {
+        return $this->_request($this->_parseRoute($id));
+    }
+
+    /**
+     * @param string|int $id
+     * @return string
+     */
+    protected function _parseRoute($id = '')
+    {
+        return str_replace(':id', $id, $this->_getRoute());
+    }
+
     /**
      * @return int
      */
