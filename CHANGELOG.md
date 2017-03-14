@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unrleased
+### CHANGED:
+- Fix modman file
+
 ## 0.1.3 — 2015-06-03
 ### ADDED:
 - Missing sitemap model
