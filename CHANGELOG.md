@@ -1,24 +1,25 @@
 # Change Log
-All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
+All notable changes to this project will be documented in this file. 
+This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unrleased
-### CHANGED:
+## [Unreleased]
+### Changed
 - Fix modman file
 
-## 0.1.3 — 2015-06-03
-### ADDED:
+## [0.1.3] — 2015-06-03
+### Added
 - Missing sitemap model
 
-## 0.1.2 — 2015-06-01
-### ADDED:
+## [0.1.2] — 2015-06-01
+### Added
 - Posts and categories to sitemap
 
-## 0.1.1 — 2015-05-27
-### CHANGED:
+## [0.1.1] — 2015-05-27
+### Changed
 - Update readme file
 
-## 0.1.0 — 2015-05-27
-### ADDED:
+## [0.1.0] — 2015-05-27
+### Added
 - Change log file
 - Git ignore file
 - Module
