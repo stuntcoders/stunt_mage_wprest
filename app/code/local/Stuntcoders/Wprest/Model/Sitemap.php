@@ -7,7 +7,6 @@ class Stuntcoders_Wprest_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         $io = new Varien_Io_File();
         $io->setAllowCreateFolders(true);
         $io->open(array('path' => $this->getPath()));
-        $api = Mage::getModel('stuntcoders_wprest/api');
 
         if ($io->fileExists($this->getSitemapFilename()) && !$io->isWriteable($this->getSitemapFilename())) {
             Mage::throwException(Mage::helper('sitemap')->__('File "%s" cannot be saved. Please, make sure the directory "%s" is writeable by web server.', $this->getSitemapFilename(), $this->getPath()));
@@ -67,8 +66,7 @@ class Stuntcoders_Wprest_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         }
         unset($collection);
 
-        $collection = $api->getPosts();
-        foreach ($collection as $post) {
+        foreach (Mage::getSingleton('stuntcoders_wprest/api_post')->getCollection() as $post) {
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $post['slug']),
@@ -80,8 +78,7 @@ class Stuntcoders_Wprest_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         }
         unset($collection);
 
-        $collection = $api->getCategories();
-        foreach ($collection as $category) {
+        foreach (Mage::getSingleton('stuntcoders_wprest/api_category')->getCollection() as $category) {
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $category['slug']),
