@@ -120,7 +120,8 @@ class Stuntcoders_Wprest_Model_Api extends Varien_Object
 
             $this->setData('_http_client', $client);
         }
-        return $this->getData('http_client');
+
+        return $this->getData('_http_client');
     }
 
     protected function _parseLinkHeader($linkHeader)
