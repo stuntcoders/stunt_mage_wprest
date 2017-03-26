@@ -55,15 +55,19 @@ class StuntCoders_Wprest_Controller_Router extends Mage_Core_Controller_Varien_R
         }
 
         foreach ($this->_matchers as $action => $callback) {
-            if ($object = $this->$callback($identifier)) {
-                $request->setModuleName('stuntcoders_wprest')
-                    ->setControllerName('index')
-                    ->setActionName($action)
-                    ->setParam('object', $object);
+            try {
+                if ($object = $this->$callback($identifier)) {
+                    $request->setModuleName('stuntcoders_wprest')
+                        ->setControllerName('index')
+                        ->setActionName($action)
+                        ->setParam('object', $object);
 
-                $request->setAlias(Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS, $identifier);
+                    $request->setAlias(Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS, $identifier);
 
-                return true;
+                    return true;
+                }
+            } catch (Exception $e) {
+                Mage::logException($e);
             }
         }
 
