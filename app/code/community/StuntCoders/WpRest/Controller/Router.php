@@ -1,6 +1,6 @@
 <?php
 
-class StuntCoders_Wprest_Controller_Router extends Mage_Core_Controller_Varien_Router_Abstract
+class StuntCoders_WpRest_Controller_Router extends Mage_Core_Controller_Varien_Router_Abstract
 {
     protected $_matchers = array(
         'post' => '_matchPost',

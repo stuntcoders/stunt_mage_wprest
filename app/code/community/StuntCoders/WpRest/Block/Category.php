@@ -4,7 +4,7 @@
  * @method StuntCoders_Wprest_Block_Category setCategory(array $category)
  * @method array getCategory()
  */
-class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
+class StuntCoders_WpRest_Block_Category extends Mage_Core_Block_Template
 {
     /**
      * @return string

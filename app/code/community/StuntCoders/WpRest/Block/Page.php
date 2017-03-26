@@ -4,7 +4,7 @@
  * @method StuntCoders_Wprest_Block_Post setPage(array $page)
  * @method array getPage()
  */
-class StuntCoders_Wprest_Block_Page extends Mage_Core_Block_Template
+class StuntCoders_WpRest_Block_Page extends Mage_Core_Block_Template
 {
     public function getTitle()
     {
