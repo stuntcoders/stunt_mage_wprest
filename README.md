@@ -24,4 +24,83 @@ Configuration for Magento WP Rest module can be found in *Magento Admin Panel ->
 
 * **Base Uri** - Defines the url where WordPress API is located. Url must be absolute and can eaither on same or different domain than Magento store is. Example: http://example.com/wp-json/
 
+## Integration ##
+
+WpRest module is built for developers. It provides set of models for interaction with WordPress REST API, allowing developers to easily extend integration.
+
+Each API model (`post`, `page`, `category`, `media`) allows fetching colection or single record.
+
+### Posts
+
+#### Fetching collection of records
+Full list of options can be found here - https://developer.wordpress.org/rest-api/reference/posts/#list-posts
+```php
+$options = array(
+  'slug' => 'example-post-slug',
+  'categories' => 1,
+  'orderby' => 'title'
+);
+
+$posts = Mage::getSingleton('stuntcoders_wprest/api_post')->getCollection($options);
+```
+
+#### Fethcing single record
+```php
+$post = Mage::getSingleton('stuntcoders_wprest/api_post')->getMember($postId);
+```
+
+### Pages
+
+#### Fetching collection of records
+Full list of options can be found here - https://developer.wordpress.org/rest-api/reference/pages/#list-pages
+```php
+$options = array(
+  'slug' => 'example-page-slug',
+  'orderby' => 'title'
+);
+
+$pages = Mage::getSingleton('stuntcoders_wprest/api_page')->getCollection($options);
+```
+
+#### Fethcing single record
+```php
+$page = Mage::getSingleton('stuntcoders_wprest/api_page')->getMember($pageId);
+```
+
+### Categories
+
+#### Fetching collection of records
+Full list of options can be found here - https://developer.wordpress.org/rest-api/reference/categories/#list-categorys
+```php
+$options = array(
+  'slug' => 'example-category-slug',
+  'orderby' => 'title'
+);
+
+$categories = Mage::getSingleton('stuntcoders_wprest/api_category')->getCollection($options);
+```
+
+#### Fethcing single record
+```php
+$category = Mage::getSingleton('stuntcoders_wprest/api_category')->getMember($categoryId);
+```
+
+### Media
+
+#### Fetching collection of records
+Full list of options can be found here - https://developer.wordpress.org/rest-api/reference/categories/#list-categorys
+```php
+$options = array(
+  'slug' => 'example-media-slug',
+  'orderby' => 'title'
+);
+
+$media = Mage::getSingleton('stuntcoders_wprest/api_media')->getCollection($options);
+```
+
+#### Fethcing single record
+```php
+$media = Mage::getSingleton('stuntcoders_wprest/api_media')->getMember($mediaId);
+```
+
 Copyright StuntCoders — [Start Your Online Store Now](http://stuntcoders.com/)
