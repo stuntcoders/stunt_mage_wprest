@@ -10,7 +10,7 @@
  * @method StuntCoders_Wprest_Model_Api_Abstract setCurrentPage(int $page)
  * @method int getCurrentPage()
  */
-abstract class StuntCoders_Wprest_Model_Api_Abstract extends Varien_Object
+abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
 {
     /**
      * @param string $id

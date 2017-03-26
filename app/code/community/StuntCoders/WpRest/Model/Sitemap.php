@@ -1,6 +1,6 @@
 <?php
 
-class StuntCoders_Wprest_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
+class StuntCoders_WpRest_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
 {
     public function generateXml()
     {

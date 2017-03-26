@@ -4,7 +4,7 @@
  * @method StuntCoders_Wprest_Block_Category setCategory(array $category)
  * @method array getCategory()
  */
-class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
+class StuntCoders_WpRest_Block_Category extends Mage_Core_Block_Template
 {
     /**
      * @return string
@@ -21,15 +21,6 @@ class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
      */
     public function getPosts()
     {
-        if (!$this->getData('_posts')) {
-            $category = $this->getCategory();
-            $posts = Mage::getSingleton('stuntcoders_wprest/api_post')->getCollection(array(
-                'categories' => $category['id']
-            ));
-
-            $this->setData('_posts', $posts);
-        }
-
         return $this->getData('_posts');
     }
 
@@ -38,8 +29,8 @@ class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
      */
     public function getNextPageUrl()
     {
-        $api = Mage::getSingleton('stuntcoders_wprest/api_category');
-        if (!$api->getNextLink()) {
+        $api = Mage::getSingleton('stuntcoders_wprest/api_post');
+        if ($api->getCurrentPage() >= $api->getTotalPages()) {
             return false;
         }
 
@@ -51,8 +42,8 @@ class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
      */
     public function getPrevPageUrl()
     {
-        $api = Mage::getSingleton('stuntcoders_wprest/api_category');
-        if (!$api->getPrevLink()) {
+        $api = Mage::getSingleton('stuntcoders_wprest/api_post');
+        if ($api->getCurrentPage() <= 1) {
             return false;
         }
 
@@ -72,6 +63,21 @@ class StuntCoders_Wprest_Block_Category extends Mage_Core_Block_Template
             $this->setTemplate('stuntcoders/wprest/category.phtml');
         }
 
+        $this->_fetchPosts();
+
         return parent::_toHtml();
+    }
+
+    protected function _fetchPosts()
+    {
+        if (!$this->getData('_posts')) {
+            $category = $this->getCategory();
+            $posts = Mage::getSingleton('stuntcoders_wprest/api_post')->getCollection(array(
+                'categories' => $category['id'],
+                'page' => Mage::app()->getRequest()->getParam('page', 1),
+            ));
+
+            $this->setData('_posts', $posts);
+        }
     }
 }

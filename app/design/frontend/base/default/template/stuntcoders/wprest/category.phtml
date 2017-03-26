@@ -6,7 +6,9 @@
             <?php echo $this->getLayout()->createBlock('stuntcoders_wprest/post')->setTemplate('stuntcoders/wprest/category/post.phtml')->setPost($post)->toHtml(); ?>
         <?php endforeach; ?>
 
-        <?php if (($prev = $this->getPrevPageUrl()) || ($next = $this->getNextPageUrl())): ?>
+        <?php $prev = $this->getPrevPageUrl(); ?>
+        <?php $next = $this->getNextPageUrl(); ?>
+        <?php if ($prev || $next): ?>
             <nav class="navigation paging-navigation medium-8 columns" role="navigation">
                 <div class="nav-links">
                     <?php if ($prev): ?>
