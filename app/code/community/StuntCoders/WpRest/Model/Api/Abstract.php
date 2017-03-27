@@ -13,10 +13,34 @@
 abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
 {
     /**
+     * set API cache lifetime to 2 hours
+     */
+    const CACHE_LIFETIME = 7200;
+
+    const CACHE_TAG = 'STUNTCODERS_WPREST_API_CACHE';
+
+    const API_DIR = 'wp-json/';
+
+    protected $_cache;
+
+    protected $_cacheEnabled;
+
+    protected $_cacheGroup = 'stuntcoders_wprest';
+
+    /**
      * @param string $id
      * @return string
      */
     protected abstract function _getRoute($id = '');
+
+    /**
+     * Check if cache is enabled
+     */
+    public function __construct()
+    {
+        $this->_cacheEnabled = Mage::app()->useCache($this->_cacheGroup);
+        $this->_cache = Mage::app()->getCache();
+    }
 
     /**
      * @param array $params
@@ -69,6 +93,14 @@ abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
      */
     protected function _request($route, $params = array())
     {
+        $cacheKey = $this->_getCacheKey($route, $params);
+
+        if ($this->_cacheEnabled) {
+            if ($cached = $this->_loadCache($cacheKey) ) {
+                return unserialize($cached);
+            }
+        }
+
         $this->_getHttpClient()->resetParameters();
         $this->_getHttpClient()->setUri($this->_getEndpointUri($route));
         $this->_getHttpClient()->setParameterGet($params);
@@ -85,6 +117,10 @@ abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
         }
 
         $responseBody = Mage::helper('core')->jsonDecode($responseBody);
+
+        if($this->_cacheEnabled) {
+            $this->_saveCache(serialize($responseBody), $cacheKey, self::CACHE_LIFETIME);
+        }
 
         return empty($responseBody) ? array() : $responseBody;
     }
@@ -103,7 +139,7 @@ abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
                 'timeout' => 10,
             ));
 
-            $this->setBaseUri(Mage::helper('stuntcoders_wprest')->getBaseUri());
+            $this->setBaseUri(Mage::helper('stuntcoders_wprest')->getBaseUri() . self::API_DIR);
 
             $this->setData('_http_client', $client);
         }
@@ -165,5 +201,46 @@ abstract class StuntCoders_WpRest_Model_Api_Abstract extends Varien_Object
         }
 
         return true;
+    }
+
+    /**
+     * Generate a cache key for the API path and query params
+     *
+     * @param       $route
+     * @param array $params
+     *
+     * @return string
+     */
+    protected function _getCacheKey($route, array $params = array())
+    {
+        $key = $route;
+        $key .= md5(serialize($params));
+        return $key;
+    }
+
+    /**
+     * Cache an API response
+     *
+     * @param $response
+     * @param $cacheKey
+     *
+     * @return $this
+     */
+    protected function _saveCache($response, $cacheKey, $lifeTime)
+    {
+        $this->_cache->save($response, $cacheKey, array(self::CACHE_TAG), $lifeTime);
+        return $this;
+    }
+
+    /**
+     * Load cached API response
+     *
+     * @param $cacheKey
+     *
+     * @return bool|string
+     */
+    protected function _loadCache($cacheKey)
+    {
+        return $this->_cache->load($cacheKey);
     }
 }
