@@ -9,10 +9,8 @@ class StuntCoders_WpRest_IndexController extends Mage_Core_Controller_Front_Acti
         $this->loadLayout();
         $this->getLayout()->getBlock('head')->setTitle($post['title']['rendered']);
 
-        $block = $this->getLayout()->createBlock('stuntcoders_wprest/post', 'stuntcoders_wprest_post')
-            ->setPost($post);
+        $this->getLayout()->getBlock('stuntcoders_wprest_post')->setPost($post);
 
-        $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
 
@@ -23,10 +21,8 @@ class StuntCoders_WpRest_IndexController extends Mage_Core_Controller_Front_Acti
         $this->loadLayout();
         $this->getLayout()->getBlock('head')->setTitle($page['title']['rendered']);
 
-        $block = $this->getLayout()->createBlock('stuntcoders_wprest/page', 'stuntcoders_wprest_page')
-            ->setPage($page);
+        $this->getLayout()->getBlock('stuntcoders_wprest_page')->setPage($page);
 
-        $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
 
@@ -37,10 +33,8 @@ class StuntCoders_WpRest_IndexController extends Mage_Core_Controller_Front_Acti
         $this->loadLayout();
         $this->getLayout()->getBlock('head')->setTitle($category['name']);
 
-        $block = $this->getLayout()->createBlock('stuntcoders_wprest/category', 'stuntcoders_wprest_category')
-            ->setCategory($category);
+        $this->getLayout()->getBlock('stuntcoders_wprest_category')->setCategory($category);
 
-        $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
 }

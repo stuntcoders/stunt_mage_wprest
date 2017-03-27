@@ -2,10 +2,19 @@
 <config>
     <modules>
         <StuntCoders_WpRest>
-            <version>0.1.3</version>
+            <version>0.1.4</version>
         </StuntCoders_WpRest>
     </modules>
     <global>
+        <cache>
+            <types>
+                <stuntcoders_wprest translate="label,description" module="wprest">
+                    <label>Wordpress REST API</label>
+                    <description>REST API calls to Wordpress Installation</description>
+                    <tags>STUNTCODERS_WPREST_API_CACHE</tags>
+                </stuntcoders_wprest>
+            </types>
+        </cache>
         <models>
             <stuntcoders_wprest>
                 <class>StuntCoders_WpRest_Model</class>
@@ -51,5 +60,12 @@
                 </args>
             </stuntcoders_wprest>
         </routers>
+        <layout>
+            <updates>
+                <stuntcoders_wprest>
+                    <file>stuntcoders_wprest.xml</file>
+                </stuntcoders_wprest>
+            </updates>
+        </layout>
     </frontend>
 </config>
