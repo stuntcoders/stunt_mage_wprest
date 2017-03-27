@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout>
+    <stuntcoders_wprest_index_post>
+        <reference name="content">
+            <block type="stuntcoders_wprest/post" name="stuntcoders_wprest_post" template="stuntcoders/wprest/post.phtml"/>
+        </reference>
+    </stuntcoders_wprest_index_post>
+
+    <stuntcoders_wprest_index_page>
+        <reference name="content">
+            <block type="stuntcoders_wprest/page" name="stuntcoders_wprest_page" template="stuntcoders/wprest/page.phtml"/>
+        </reference>
+    </stuntcoders_wprest_index_page>
+
+    <stuntcoders_wprest_index_category>
+        <reference name="content">
+            <block type="stuntcoders_wprest/category" name="stuntcoders_wprest_category" template="stuntcoders/wprest/category.phtml"/>
+        </reference>
+    </stuntcoders_wprest_index_category>
+
+</layout>
