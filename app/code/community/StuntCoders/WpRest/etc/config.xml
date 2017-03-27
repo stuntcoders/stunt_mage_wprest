@@ -6,6 +6,15 @@
         </StuntCoders_WpRest>
     </modules>
     <global>
+        <cache>
+            <types>
+                <stuntcoders_wprest translate="label,description" module="wprest">
+                    <label>Wordpress REST API</label>
+                    <description>REST API calls to Wordpress Installation</description>
+                    <tags>STUNTCODERS_WPREST_API_CACHE</tags>
+                </stuntcoders_wprest>
+            </types>
+        </cache>
         <models>
             <stuntcoders_wprest>
                 <class>StuntCoders_WpRest_Model</class>
