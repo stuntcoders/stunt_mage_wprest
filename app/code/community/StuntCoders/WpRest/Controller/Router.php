@@ -28,7 +28,15 @@ class StuntCoders_WpRest_Controller_Router extends Mage_Core_Controller_Varien_R
             exit;
         }
 
-        $identifier = trim($request->getPathInfo(), '/');
+        $identifierArray = explode('/', $request->getPathInfo());
+
+        $identifierArray = array_filter($identifierArray,
+            function($value) {
+                return $value !== '';
+            }
+        );
+
+        $identifier = end($identifierArray);
 
         $condition = new Varien_Object(array(
             'identifier' => $identifier,
