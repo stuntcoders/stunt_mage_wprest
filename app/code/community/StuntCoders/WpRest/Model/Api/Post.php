@@ -1,6 +1,6 @@
 <?php
 
-class StuntCoders_WpRest_Model_Api_Post extends StuntCoders_Wprest_Model_Api_Abstract
+class StuntCoders_WpRest_Model_Api_Post extends StuntCoders_WpRest_Model_Api_Abstract
 {
     const ROUTE = '/wp/v2/posts/:id';
 
