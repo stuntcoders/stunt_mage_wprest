@@ -50,16 +50,10 @@ class StuntCoders_WpRest_Block_Post extends Mage_Core_Block_Template
         return $this->getData('_featured_image');
     }
 
-    protected function _toHtml()
+    public function getPosts($filter = array())
     {
-        if (!$this->getPost()) {
-            return '';
-        }
+        $posts = Mage::getSingleton('stuntcoders_wprest/api_post')->getCollection($filter);
 
-        if (!$this->getTemplate()) {
-            $this->setTemplate('stuntcoders/wprest/post.phtml');
-        }
-
-        return parent::_toHtml();
+        return $posts;
     }
 }

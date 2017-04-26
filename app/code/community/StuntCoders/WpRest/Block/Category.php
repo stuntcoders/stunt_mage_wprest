@@ -50,24 +50,6 @@ class StuntCoders_WpRest_Block_Category extends Mage_Core_Block_Template
         return $this->getUrl($this->getSlug(), array('_query' => array('page' => $api->getPrevPageIndex())));
     }
 
-    /**
-     * @return string
-     */
-    protected function _toHtml()
-    {
-        if (!$this->getCategory()) {
-            return '';
-        }
-
-        if (!$this->getTemplate()) {
-            $this->setTemplate('stuntcoders/wprest/category.phtml');
-        }
-
-        $this->_fetchPosts();
-
-        return parent::_toHtml();
-    }
-
     protected function _fetchPosts()
     {
         if (!$this->getData('_posts')) {
