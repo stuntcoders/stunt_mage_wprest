@@ -33,17 +33,4 @@ class StuntCoders_WpRest_Block_Page extends Mage_Core_Block_Template
 
         return $this->getUrl($post['slug']);
     }
-
-    protected function _toHtml()
-    {
-        if (!$this->getPage()) {
-            return '';
-        }
-
-        if (!$this->getTemplate()) {
-            $this->setTemplate('stuntcoders/wprest/page.phtml');
-        }
-
-        return parent::_toHtml();
-    }
 }
