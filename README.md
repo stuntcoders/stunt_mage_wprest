@@ -2,7 +2,7 @@
 
 Magento and WordPress were always the mighty combination as Magento is lacking quality CMS control. Over the years, there were many extensions developed to run Magento inside WordPress and vice versa. However, they were all lacking ability to naturally or easily connect Magento and WordPress and mostly — they were not SEO friendly.
 
-Thanks to the [WP Rest API](https://developer.wordpress.org/rest-api/), clean WP-Magento integration if finally possible.
+Thanks to the [WP Rest API](https://developer.wordpress.org/rest-api/), clean WP-Magento integration is finally possible.
 
 Magento WP Rest module solves problems caused by Magento's feature lacking CMS by integrating WordPress blog through WP Rest Api. With almost no configuration, your blog can now become natural part of your store. This will allow user to write content using WordPress and it's rich options, while posts, pages and categories will be showing in Magento.
 
